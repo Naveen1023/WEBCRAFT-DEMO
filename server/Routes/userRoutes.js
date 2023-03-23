@@ -8,4 +8,4 @@ router.post('/',createUser);
 router.delete('/:id', deleteUser);
 router.patch('/:id', updateUser);
 
-module.exports = router ; 
+module.exports = router; 

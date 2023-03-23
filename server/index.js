@@ -2,22 +2,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require("dotenv")
-
+const cors = require('cors');
 
 //CONFIGURATIONS
 const app = express()
 dotenv.config();
 app.use(express.json())
-
-
+app.use(cors());
 
 // GET ALL THE ROUTES
 const userRouter = require('./Routes/userRoutes');
 app.use('/customAPI/v1/user', userRouter);
-
-
-
-
 
 // END-POINTS
 app.get('/', (req, res) => {
@@ -40,15 +35,14 @@ app.get('/loadData', (req, res) => {
 })
 
 
-
-
 // CONNECT TO DB
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL)
-.then(()=> console.log('connected to DB'))
+.then(()=> console.log('Connected to DB'))
+.catch(e => console.log(e.message))
 
 
 // START THE SERVER
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+  console.log(`WebCraft Demo app listening on port ${PORT}`)
 })
