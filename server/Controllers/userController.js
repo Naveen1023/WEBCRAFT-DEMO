@@ -30,10 +30,13 @@ const createUser = async(req, res) => {
 
 const deleteUser = async(req, res) => {
     try{
+        const groupID = req.params.id;
+        // console.log(groupID);
+        await userModel.deleteOne({groupNo : groupID})
         res.status(200).send({msg: "Done"});
     }
     catch(err){
-        res.status(409).send({err : 'can\'t delete user...'});
+        res.status(409).send({err : err.message});
     }
 } 
 
