@@ -1,3 +1,5 @@
+const baseURL = "http://localhost:3000";
+
 window.onload = function() {
     const container = document.getElementById("container");
     const loading = document.getElementById("loading");
