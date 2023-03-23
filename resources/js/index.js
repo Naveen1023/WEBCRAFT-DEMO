@@ -2,7 +2,7 @@ window.onload = function() {
     const container = document.getElementById("container");
     const loading = document.getElementById("loading");
 
-    fetch("http://localhost:3000/customAPI/v1/user")
+    fetch(baseURL + "/customAPI/v1/user")
     .then((data) => data.json())
     .then((data) => {
         data.map(user => {
@@ -60,7 +60,7 @@ function createUser(e) {
         "projectName": form.projectName.value
     }
     
-    fetch("http://localhost:3000/customAPI/v1/user", {
+    fetch(baseURL + "/customAPI/v1/user", {
         "method": "post", 
         headers: {
             "Content-Type": "application/json"
@@ -75,7 +75,7 @@ function createUser(e) {
 
 function deleteUser(e) {
     const groupNo = e.target.getAttribute('rowID');
-    const url = "http://localhost:3000/customAPI/v1/user/" + groupNo;
+    const url = baseURL + "/customAPI/v1/user/" + groupNo;
     fetch(url, {
         "method": "delete",
         "headers": {
