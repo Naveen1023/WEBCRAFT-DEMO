@@ -14,14 +14,12 @@ const getAllUsers = async(req, res) => {
 const createUser = async(req, res) => {
     try{
         const {groupNo, groupName, members, projectName} = req.body;
-
-        // console.log("ok")
         const newUser = new userModel({
             groupNo, groupName, members, projectName
         })
-        console.log(newUser);
+        
         await newUser.save();
-        res.status(201).send({msg : "user created successfully!!!!"});
+        res.status(200).send({msg : "user created successfully!!!!"});
     }
     catch(err){
         console.log(err.message);
@@ -50,4 +48,4 @@ const updateUser = () => {
     }
 }
 
-module.exports = {getAllUsers, createUser};
+module.exports = {getAllUsers, createUser, deleteUser, updateUser};
