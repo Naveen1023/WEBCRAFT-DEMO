@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema (
         groupNo : {
             type : Number,
             required: true,
+            unique : true,
         },
         groupName : {
             type : String,
